@@ -1,7 +1,7 @@
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
 	typeof define === 'function' && define.amd ? define(factory) :
-	(global.LiteRouter = factory());
+	(global.VueAlertify = factory());
 }(this, (function () { 'use strict';
 
 var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
@@ -3640,18 +3640,19 @@ VueAlertify.install = function (Vue, options) {
 if (window && document) {
     window.VueAlertify = VueAlertify;
 
-    importCss(document, "//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/alertify.min.css");
-    importCss(document, "//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/themes/default.min.css");
+    loadCSSIfNotAlreadyLoaded(document, "//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/alertify.min.css");
+    loadCSSIfNotAlreadyLoaded(document, "//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/themes/default.min.css");
 }
 
-function importCss(document, href) {
-    "use strict";
-
+function loadCSSIfNotAlreadyLoaded(document, href) {
+    var ss = document.styleSheets;
+    for (var i = 0, max = ss.length; i < max; i++) {
+        if (ss[i].href == href) return;
+    }
     var link = document.createElement("link");
-    link.href = href;
-    link.type = "text/css";
     link.rel = "stylesheet";
-    link.media = "screen,print";
+    link.href = href;
+
     document.getElementsByTagName("head")[0].appendChild(link);
 }
 
