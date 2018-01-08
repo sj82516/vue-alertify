@@ -3625,11 +3625,20 @@ VueAlertify.install = function (Vue, options) {
                 alert: function alert(text, cb) {
                     alertify.alert(text, cb);
                 },
+                alertWithTitle: function alertWithTitle(title, text, cb) {
+                    alertify.alert(title, text, cb);
+                },
                 confirm: function confirm(text, ok, cancel) {
                     alertify.confirm(text, ok, cancel);
                 },
+                confirmWithTitle: function confirmWithTitle(title, text, ok, cancel) {
+                    alertify.confirm(title, text, ok, cancel);
+                },
                 prompt: function prompt(text, defaultValue, ok, cancel) {
                     alertify.prompt(text, defaultValue, ok, cancel);
+                },
+                promptWithTitle: function promptWithTitle(title, text, defaultValue, ok, cancel) {
+                    alertify.prompt(title, text, defaultValue, ok, cancel);
                 }
             };
         }
