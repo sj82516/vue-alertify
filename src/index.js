@@ -22,13 +22,13 @@ VueAlertify.install = function (Vue, options) {
                     Alertify.message(text)
                 },
                 alert: function (text, cb) {
-                    Alertify.alert(text, cb)
+                    Alertify.alert(title, text, cb)
                 },
                 confirm: function (text, ok, cancel) {
-                    Alertify.confirm(text, ok, cancel)
+                    Alertify.confirm(title, text, ok, cancel)
                 },
                 prompt: function (text, defaultValue, ok, cancel) {
-                    Alertify.prompt(text, defaultValue, ok, cancel)
+                    Alertify.prompt(title, text, defaultValue, ok, cancel)
                 }
             }
         }
