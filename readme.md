@@ -1,6 +1,6 @@
-# Purpose 
-This is the Vue@2.x plugin wrapped functions of [Alertifyjs](https://github.com/MohammadYounes/AlertifyJS) which is maintained by MohammadYounes 
-AlertifyJS provides beautiful popup alert / confirm / prompt / messaging views, so you can simply call the function and no need to handle views anymore.  
+# Purpose
+This is the Vue@2.x plugin wrapped functions of [Alertifyjs](https://github.com/MohammadYounes/AlertifyJS) which is maintained by MohammadYounes
+AlertifyJS provides beautiful popup alert / confirm / prompt / messaging views, so you can simply call the function and no need to handle views anymore.
 
 # Installation
 ```
@@ -8,7 +8,7 @@ npm install vue-alertify
 ```
 vue-alertify would import the stylesheet of Alertify automatically, so you don't need to import by yourself.
 
-# Demo  
+# Demo
 [jsfiddle](https://jsfiddle.net/sj82516/vv9v9crt/)
 
 # How to use
@@ -64,10 +64,69 @@ var vm = new Vue({
   }
 })
 ```
+# Default options
+
+The defaults of alertify can be changed via the `options` parameter of the `use` statement.
+
+```javascript
+Vue.use(VueAlertify, {
+  // dialogs defaults
+  autoReset: true,
+  basic: false,
+  closable: true,
+  closableByDimmer: true,
+  frameless: false,
+  maintainFocus: true, // <== global default not per instance, applies to all dialogs
+  maximizable: true,
+  modal: true,
+  movable: true,
+  moveBounded: false,
+  overflow: true,
+  padding: true,
+  pinnable: true,
+  pinned: true,
+  preventBodyShift: false, // <== global default not per instance, applies to all dialogs
+  resizable: true,
+  startMaximized: false,
+  transition: 'pulse',
+
+  // notifier defaults
+  notifier: {
+    // auto-dismiss wait time (in seconds)
+    delay: 5,
+    // default position
+    position: 'top-right',
+    // adds a close button to notifier messages
+    closeButton: false
+  },
+
+  // language resources
+  glossary: {
+    // dialogs default title
+    title: 'AlertifyJS',
+    // ok button text
+    ok: 'OK',
+    // cancel button text
+    cancel: 'Cancel'
+  },
+
+  // theme settings
+  theme: {
+    // class name attached to prompt dialog input textbox.
+    input: 'ajs-input',
+    // class name attached to ok button
+    ok: 'ajs-ok',
+    // class name attached to cancel button
+    cancel: 'ajs-cancel'
+  }
+});
+```
+
+
 Other usage please checkout [Alertifyjs documentation](http://alertifyjs.com/guide.html)
 
 # Contributors
-Thanks [Jonathan Andersson](https://github.com/ja1984) for adding methods with title setting.  
+Thanks [Jonathan Andersson](https://github.com/ja1984) for adding methods with title setting.
 
 # Resource
 1. Alertifyjs: https://github.com/MohammadYounes/AlertifyJS
