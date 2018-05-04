@@ -2,8 +2,9 @@ import Alertify from "alertifyjs"
 
 let VueAlertify = {}
 
-
 VueAlertify.install = function (Vue, options) {
+    Object.assign(Alertify.defaults, options);
+
     Object.defineProperty(Vue.prototype, '$alertify', {
         get () {
             return {
