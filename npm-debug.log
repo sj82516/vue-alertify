@@ -1,0 +1,47 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/zhengyuanjie/.nvm/versions/node/v6.10.2/bin/node',
+1 verbose cli   '/Users/zhengyuanjie/.nvm/versions/node/v6.10.2/bin/npm',
+1 verbose cli   'whoami' ]
+2 info using npm@3.10.10
+3 info using node@v6.10.2
+4 verbose request uri https://registry.npmjs.org/-/whoami
+5 verbose request no auth needed
+6 info attempt registry request try #1 at 12:32:14
+7 verbose request using bearer token for auth
+8 verbose request id 55f38d0c61f73a47
+9 http request GET https://registry.npmjs.org/-/whoami
+10 http 401 https://registry.npmjs.org/-/whoami
+11 verbose headers { 'content-type': 'application/json',
+11 verbose headers   'cache-control': 'max-age=300',
+11 verbose headers   'content-length': '2',
+11 verbose headers   'accept-ranges': 'bytes',
+11 verbose headers   date: 'Fri, 04 May 2018 04:32:15 GMT',
+11 verbose headers   via: '1.1 varnish',
+11 verbose headers   connection: 'keep-alive',
+11 verbose headers   'x-served-by': 'cache-itm18824-ITM',
+11 verbose headers   'x-cache': 'MISS',
+11 verbose headers   'x-cache-hits': '0',
+11 verbose headers   'x-timer': 'S1525408335.059781,VS0,VE581',
+11 verbose headers   vary: 'Accept-Encoding, Accept' }
+12 verbose stack Error: Registry returned 401 for GET on https://registry.npmjs.org/-/whoami
+12 verbose stack     at makeError (/Users/zhengyuanjie/.nvm/versions/node/v6.10.2/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:302:12)
+12 verbose stack     at CachingRegistryClient.<anonymous> (/Users/zhengyuanjie/.nvm/versions/node/v6.10.2/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:280:14)
+12 verbose stack     at Request._callback (/Users/zhengyuanjie/.nvm/versions/node/v6.10.2/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:210:14)
+12 verbose stack     at Request.self.callback (/Users/zhengyuanjie/.nvm/versions/node/v6.10.2/lib/node_modules/npm/node_modules/request/request.js:187:22)
+12 verbose stack     at emitTwo (events.js:106:13)
+12 verbose stack     at Request.emit (events.js:191:7)
+12 verbose stack     at Request.<anonymous> (/Users/zhengyuanjie/.nvm/versions/node/v6.10.2/lib/node_modules/npm/node_modules/request/request.js:1048:10)
+12 verbose stack     at emitOne (events.js:96:13)
+12 verbose stack     at Request.emit (events.js:188:7)
+12 verbose stack     at IncomingMessage.<anonymous> (/Users/zhengyuanjie/.nvm/versions/node/v6.10.2/lib/node_modules/npm/node_modules/request/request.js:969:12)
+13 verbose statusCode 401
+14 verbose cwd /Users/zhengyuanjie/Desktop/Nodejs/vue-alertify
+15 error Darwin 17.4.0
+16 error argv "/Users/zhengyuanjie/.nvm/versions/node/v6.10.2/bin/node" "/Users/zhengyuanjie/.nvm/versions/node/v6.10.2/bin/npm" "whoami"
+17 error node v6.10.2
+18 error npm  v3.10.10
+19 error code E401
+20 error Registry returned 401 for GET on https://registry.npmjs.org/-/whoami
+21 error If you need help, you may report this error at:
+21 error     <https://github.com/npm/npm/issues>
+22 verbose exit [ 1, true ]

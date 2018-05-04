@@ -127,6 +127,7 @@ Other usage please checkout [Alertifyjs documentation](http://alertifyjs.com/gui
 
 # Contributors
 Thanks [Jonathan Andersson](https://github.com/ja1984) for adding methods with title setting.
+Thanks [simonvomeyser](https://github.com/simonvomeyser) for adding Alertifyjs default override. 
 
 # Resource
 1. Alertifyjs: https://github.com/MohammadYounes/AlertifyJS

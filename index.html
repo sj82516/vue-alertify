@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+
+    <script src="/dist/vue-alertify.min.js"></script>
+</head>
+
+<body>
+    <div id="main">
+        Hi Alertify
+        <button @click="success">success</button>
+        <button @click="alert">alert</button>
+        <button @click="alertWithTitle">alertWithTitle</button>
+        <button @click="confirm">confirm</button>
+        <button @click="confirmWithTitle">confirmWithTitle</button>
+        <button @click="prompt">prompt</button>
+        <button @click="promptWithTitle">promptWithTitle</button>
+    </div>
+    <script>
+        Vue.use(VueAlertify, {
+            // notifier defaults
+            notifier: {
+                // auto-dismiss wait time (in seconds)
+                delay: 5,
+                // default position
+                position: 'top-right',
+                // adds a close button to notifier messages
+                closeButton: false
+            },
+        })
+        var vm = new Vue({
+            el: "#main",
+            methods: {
+                success: function () {
+                    this.$alertify.success("success")
+                },
+                alert: function () {
+                    this.$alertify.alertWithTitle("This is alert", () =>
+                        this.$alertify.warning("alert is closed"))
+                },
+                alertWithTitle: function () {
+                    this.$alertify.alertWithTitle("alert title", "This is alert", () =>
+                        this.$alertify.warning("alert is closed"))
+                },
+                confirm: function () {
+                    this.$alertify.confirm("This is comfirm", () =>
+                        this.$alertify.success("ok"), () => this.$alertify.error("cancel")
+                    )
+                },
+                confirmWithTitle: function () {
+                    this.$alertify.confirmWithTitle("confirm title", "This is comfirm", () =>
+                        this.$alertify.success("ok"), () => this.$alertify.error("cancel")
+                    )
+                },
+                prompt: function () {
+                    this.$alertify.prompt("This is prompt", "default value", (evt, value) =>
+                        this.$alertify.success("ok: " + value), () => this.$alertify.error("cancel")
+                    )
+                },
+                promptWithTitle: function () {
+                    this.$alertify.promptWithTitle("prompt title", "This is prompt", "default value", (evt,
+                            value) =>
+                        this.$alertify.success("ok: " + value), () => this.$alertify.error("cancel")
+                    )
+                },
+            },
+            mounted: function () {
+                setTimeout(() => {
+                    this.$alertify.success("Hello Alertify")
+                }, 500)
+            }
+        })
+    </script>
+</body>
+
+</html>
