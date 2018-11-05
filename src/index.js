@@ -10,35 +10,35 @@ VueAlertify.install = function (Vue, options) {
             return {
                 success: function (text) {
                     "use strict";
-                    Alertify.success(text)
+                    return Alertify.success(text)
                 },
                 error: function (text) {
                     "use strict";
-                    Alertify.error(text)
+                    return Alertify.error(text)
                 },
                 warning: function (text) {
-                    Alertify.warning(text)
+                    return Alertify.warning(text)
                 },
                 message: function (text) {
-                    Alertify.message(text)
+                    return Alertify.message(text)
                 },
                 alert: function (text, cb) {
-                    Alertify.alert(text, cb)
+                    return Alertify.alert(text, cb)
                 },
                 alertWithTitle: function (title, text, cb) {
-                    Alertify.alert(title, text, cb)
+                    return Alertify.alert(title, text, cb)
                 },
                 confirm: function (text, ok, cancel) {
-                    Alertify.confirm(text, ok, cancel)
+                    return Alertify.confirm(text, ok, cancel)
                 },
                 confirmWithTitle: function (title, text, ok, cancel) {
-                    Alertify.confirm(title, text, ok, cancel)
+                    return Alertify.confirm(title, text, ok, cancel)
                 },
                 prompt: function (text, defaultValue, ok, cancel) {
-                    Alertify.prompt(text, defaultValue, ok, cancel)
+                    return Alertify.prompt(text, defaultValue, ok, cancel)
                 },
                 promptWithTitle: function (title, text, defaultValue, ok, cancel) {
-                    Alertify.prompt(title, text, defaultValue, ok, cancel)
+                    return Alertify.prompt(title, text, defaultValue, ok, cancel)
                 }
             }
         }

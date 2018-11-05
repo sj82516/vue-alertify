@@ -11,36 +11,36 @@ VueAlertify.install = function (Vue, options) {
                 success: function success(text) {
                     "use strict";
 
-                    Alertify.success(text);
+                    return Alertify.success(text);
                 },
                 error: function error(text) {
                     "use strict";
 
-                    Alertify.error(text);
+                    return Alertify.error(text);
                 },
                 warning: function warning(text) {
-                    Alertify.warning(text);
+                    return Alertify.warning(text);
                 },
                 message: function message(text) {
-                    Alertify.message(text);
+                    return Alertify.message(text);
                 },
                 alert: function alert(text, cb) {
-                    Alertify.alert(text, cb);
+                    return Alertify.alert(text, cb);
                 },
                 alertWithTitle: function alertWithTitle(title, text, cb) {
-                    Alertify.alert(title, text, cb);
+                    return Alertify.alert(title, text, cb);
                 },
                 confirm: function confirm(text, ok, cancel) {
-                    Alertify.confirm(text, ok, cancel);
+                    return Alertify.confirm(text, ok, cancel);
                 },
                 confirmWithTitle: function confirmWithTitle(title, text, ok, cancel) {
-                    Alertify.confirm(title, text, ok, cancel);
+                    return Alertify.confirm(title, text, ok, cancel);
                 },
                 prompt: function prompt(text, defaultValue, ok, cancel) {
-                    Alertify.prompt(text, defaultValue, ok, cancel);
+                    return Alertify.prompt(text, defaultValue, ok, cancel);
                 },
                 promptWithTitle: function promptWithTitle(title, text, defaultValue, ok, cancel) {
-                    Alertify.prompt(title, text, defaultValue, ok, cancel);
+                    return Alertify.prompt(title, text, defaultValue, ok, cancel);
                 }
             };
         }

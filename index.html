@@ -21,6 +21,7 @@
         <button @click="confirmWithTitle">confirmWithTitle</button>
         <button @click="prompt">prompt</button>
         <button @click="promptWithTitle">promptWithTitle</button>
+        <button @click="promptWithTypeColor">promptWithTypeColor</button>
     </div>
     <script>
         Vue.use(VueAlertify, {
@@ -68,6 +69,12 @@
                             value) =>
                         this.$alertify.success("ok: " + value), () => this.$alertify.error("cancel")
                     )
+                },
+                promptWithTypeColor: function () {
+                    this.$alertify.promptWithTitle("prompt title", "This is prompt", "default value", (evt,
+                            value) =>
+                        this.$alertify.success("ok: " + value), () => this.$alertify.error("cancel")
+                    ).set('type', 'color')
                 },
             },
             mounted: function () {

@@ -1,6 +1,6 @@
 {
     "name": "vue-alertify",
-    "version": "1.0.5",
+    "version": "1.1.0",
     "description": "altertifyjs wrapper for vue",
     "main": "lib/index.js",
     "module": "es/index.js",
@@ -42,8 +42,8 @@
     "dependencies": {
         "alertifyjs": "^1.11.0",
         "babel-cli": "^6.26.0",
-        "babel-core": "^6.26.0",
-        "babel-preset-env": "^1.6.1",
+        "babel-core": "^6.26.3",
+        "babel-preset-env": "^1.7.0",
         "cross-env": "^5.1.1",
         "vue": "^2.5.2"
     },

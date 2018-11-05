@@ -16,9 +16,9 @@ function createCommonjsModule(fn, module) {
 
 var alertify = createCommonjsModule(function (module) {
 /**
- * alertifyjs 1.11.1 http://alertifyjs.com
+ * alertifyjs 1.11.0 http://alertifyjs.com
  * AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.
- * Copyright 2018 Mohammad Younes <Mohammad@alertifyjs.com> (http://alertifyjs.com) 
+ * Copyright 2017 Mohammad Younes <Mohammad@alertifyjs.com> (http://alertifyjs.com) 
  * Licensed under GPL 3 <https://opensource.org/licenses/gpl-3.0>*/
 ( function ( window ) {
     'use strict';
@@ -357,8 +357,6 @@ var alertify = createCommonjsModule(function (module) {
             usedKeys = [],
             //dummy variable, used to trigger dom reflow.
             reflow = null,
-            //holds body tab index in case it has any.
-            tabindex = false,
             //condition for detecting safari
             isSafari = window.navigator.userAgent.indexOf('Safari') > -1 && window.navigator.userAgent.indexOf('Chrome') < 0,
             //dialog building blocks
@@ -421,7 +419,14 @@ var alertify = createCommonjsModule(function (module) {
                 if(!instance.__settings){
                     instance.__settings = copy(instance.settings);
                 }
-                
+                //in case the script was included before body.
+                //after first dialog gets initialized, it won't be null anymore!
+                if(null === reflow){
+                    // set tabindex attribute on body element this allows script to give it
+                    // focus after the dialog is closed
+                    document.body.setAttribute( 'tabindex', '0' );
+                }
+
                 //get dialog buttons/focus setup
                 var setup;
                 if(typeof instance.setup === 'function'){
@@ -704,7 +709,7 @@ var alertify = createCommonjsModule(function (module) {
                 removeClass(instance.elements.root,classes.prefix +  oldValue);
             }
             addClass(instance.elements.root, classes.prefix + value);
-            
+            reflow = instance.elements.root.offsetWidth;
         }
 		
         /**
@@ -848,6 +853,9 @@ var alertify = createCommonjsModule(function (module) {
                 break;
             case 'resizable':
                 updateResizable(instance);
+                break;
+            case 'transition':
+                updateTransition(instance,newValue, oldValue);
                 break;
             case 'padding':
                 if(newValue){
@@ -2381,11 +2389,6 @@ var alertify = createCommonjsModule(function (module) {
                         this.__internal.activeElement = document.activeElement;
                     }
 
-                    // set tabindex attribute on body element this allows script to give it focusable
-                    if(!document.body.hasAttribute('tabindex')) {
-                        document.body.setAttribute( 'tabindex', tabindex = '0');
-                    }
-
                     //allow custom dom manipulation updates before showing the dialog.
                     if(typeof this.prepare === 'function'){
                         this.prepare();
@@ -2432,6 +2435,9 @@ var alertify = createCommonjsModule(function (module) {
                     }
 
                     //reflow
+                    reflow = this.elements.root.offsetWidth;
+                  
+                    // show dialog
                     removeClass(this.elements.root, classes.hidden);
 
                     // internal on show event
@@ -2477,6 +2483,9 @@ var alertify = createCommonjsModule(function (module) {
                         // hide dialog
                         addClass(this.elements.root, classes.hidden);
                         //reflow
+                        reflow = this.elements.modal.offsetWidth;
+
+                        // remove custom dialog class on hide
                         if (typeof this.__internal.className !== 'undefined' && this.__internal.className !== '') {
                             removeClass(this.elements.root, this.__internal.className);
                         }
@@ -2496,10 +2505,6 @@ var alertify = createCommonjsModule(function (module) {
                         ensureNoOverflow();
                     }
 
-                }
-                // last dialog and tab index was set by us, remove it.
-                if(!openDialogs.length && tabindex === '0'){
-                    document.body.removeAttribute('tabindex');
                 }
                 return this;
             },
@@ -3606,36 +3611,36 @@ VueAlertify.install = function (Vue, options) {
                 success: function success(text) {
                     "use strict";
 
-                    alertify.success(text);
+                    return alertify.success(text);
                 },
                 error: function error(text) {
                     "use strict";
 
-                    alertify.error(text);
+                    return alertify.error(text);
                 },
                 warning: function warning(text) {
-                    alertify.warning(text);
+                    return alertify.warning(text);
                 },
                 message: function message(text) {
-                    alertify.message(text);
+                    return alertify.message(text);
                 },
                 alert: function alert(text, cb) {
-                    alertify.alert(text, cb);
+                    return alertify.alert(text, cb);
                 },
                 alertWithTitle: function alertWithTitle(title, text, cb) {
-                    alertify.alert(title, text, cb);
+                    return alertify.alert(title, text, cb);
                 },
                 confirm: function confirm(text, ok, cancel) {
-                    alertify.confirm(text, ok, cancel);
+                    return alertify.confirm(text, ok, cancel);
                 },
                 confirmWithTitle: function confirmWithTitle(title, text, ok, cancel) {
-                    alertify.confirm(title, text, ok, cancel);
+                    return alertify.confirm(title, text, ok, cancel);
                 },
                 prompt: function prompt(text, defaultValue, ok, cancel) {
-                    alertify.prompt(text, defaultValue, ok, cancel);
+                    return alertify.prompt(text, defaultValue, ok, cancel);
                 },
                 promptWithTitle: function promptWithTitle(title, text, defaultValue, ok, cancel) {
-                    alertify.prompt(title, text, defaultValue, ok, cancel);
+                    return alertify.prompt(title, text, defaultValue, ok, cancel);
                 }
             };
         }
