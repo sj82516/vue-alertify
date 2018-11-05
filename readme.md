@@ -50,8 +50,8 @@ var vm = new Vue({
         , () => this.$alertify.error("cancel")
         )
     },
-    promptWithTitle:function(){
-    	this.$alertify.prompt("prompt title""This is prompt", "default value", (evt, value)=>
+    promptWithTitle:functi
+    	this.$alertify.promptWithTitle("prompt title", "This is prompt", "default value", (evt, value)=>
         	this.$alertify.success("ok: " + value)
         , () => this.$alertify.error("cancel")
         )
